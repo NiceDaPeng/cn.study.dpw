@@ -1,0 +1,55 @@
+/**
+接口：一个抽象类里面的方法都是抽象方法，那么这个抽象类可以定义为接口
+接口里面的方法不需要用抽象关键字abstract来修饰
+接口中也可以定义属性。
+
+*/
+interface Teacher{
+	
+	//这是一个常量，默认是public static final修饰的。
+	//这三个修饰符是默认隐藏的，为了提高程序的可读性，我们会把修饰符写出来。
+	//常量的定义用大写，如果有多个单词 就用下划线连接。
+	public static final double PI = 3.14;
+	public void learn();
+	public void doing();
+	
+}
+interface Person{
+	
+	public void smoke();
+	
+}
+//一个类可以实现多个接口
+class JavaTeacher implements Teacher,Person{
+	
+	String name ;
+	int age;
+	
+	public  void smoke(){
+		
+		System.out.println(name + "正在抽烟");
+	}
+	public void doing(){
+		
+		System.out.println(age + "岁的" + name + "正在教Java");
+	}
+	
+	public void learn(){
+		
+		System.out.println(age + "岁的" + name + "正在学习Java");
+	}
+}
+public class TestInterface{
+	
+	public static void main(String[] args){
+		
+		JavaTeacher jt = new JavaTeacher();
+		jt.name =  "小王";
+		jt.age = 20;
+		jt.doing();
+		jt.learn();
+		jt.smoke();
+		System.out.println(jt.PI);//不推荐，平时工作中基本不这么用
+		System.out.println(Teacher.PI);//推荐使用
+	}
+}
